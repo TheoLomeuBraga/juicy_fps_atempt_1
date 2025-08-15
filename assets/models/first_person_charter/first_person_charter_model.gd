@@ -1,5 +1,6 @@
 @tool
 extends Node3D
+class_name FPSCharterModel
 
 var animatin_tree : AnimationTree
 
