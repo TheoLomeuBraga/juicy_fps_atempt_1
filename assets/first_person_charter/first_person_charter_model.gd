@@ -3,11 +3,13 @@ extends Node3D
 
 var animatin_tree : AnimationTree
 
-enum TransitionEstates {IDLE,JUMP,FALL,SHOT_AUTO,SHOT_STRONG,SHOT_PUNP,SHOT_SEMI_AUTOMATIC}
+enum TransitionEstates {IDLE,GRAB_WEPON,LOWER_WEPON,JUMP,FALL,SHOT_AUTO,SHOT_STRONG,SHOT_PUNP,SHOT_SEMI_AUTOMATIC}
 
 var string_to_estate : Dictionary[String,TransitionEstates] = {
 	"" : TransitionEstates.IDLE,
 	"idle" : TransitionEstates.IDLE,
+	"grab_wepon" : TransitionEstates.GRAB_WEPON,
+	"lower_wepon" : TransitionEstates.LOWER_WEPON,
 	"jump" : TransitionEstates.JUMP,
 	"fall" : TransitionEstates.FALL,
 	"shot_auto" : TransitionEstates.SHOT_AUTO,
@@ -18,14 +20,19 @@ var string_to_estate : Dictionary[String,TransitionEstates] = {
 
 var estate_to_string : Dictionary[TransitionEstates,String]
 
+@export var muzle : Node3D
+
 func _ready() -> void:
 	animatin_tree = $AnimationTree
 	
 	for key : String in string_to_estate:
 		var value : TransitionEstates = string_to_estate[key]
 		estate_to_string[value] = key
+	
+	if muzle != null:
+		$charter_armature/Skeleton3D/Cube_003/muzle.remote_path = muzle.get_path()
 
-@export_range(0.0,1.0) var walk_influence : float = 0.0 : 
+@export_range(0.0,1.0) var walk_influence : float = 1.0 : 
 	get():
 		if animatin_tree != null:
 			return animatin_tree.get("parameters/walk_influence/add_amount")
@@ -45,7 +52,7 @@ func _ready() -> void:
 			animatin_tree.set("parameters/walk_speed/scale",value)
 
 
-@export_range(0.0,1.0) var walk_sway_influence : float = 0.0 : 
+@export_range(0.0,1.0) var walk_sway_influence : float = 1.0 : 
 	get():
 		if animatin_tree != null:
 			return animatin_tree.get("parameters/walk_sway_influence/add_amount")
