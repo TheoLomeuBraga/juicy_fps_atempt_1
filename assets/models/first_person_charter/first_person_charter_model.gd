@@ -20,10 +20,14 @@ var string_to_estate : Dictionary[String,TransitionEstates] = {
 
 var estate_to_string : Dictionary[TransitionEstates,String]
 
+var text_label : RichTextLabel
+
 @export var muzle : Node3D
 
 func _ready() -> void:
 	animatin_tree = $AnimationTree
+	
+	text_label = $SubViewport/RichTextLabel
 	
 	for key : String in string_to_estate:
 		var value : TransitionEstates = string_to_estate[key]
@@ -31,6 +35,16 @@ func _ready() -> void:
 	
 	if muzle != null:
 		$charter_armature/Skeleton3D/Cube_003/muzle.remote_path = muzle.get_path()
+
+@export_multiline var display_text = "": 
+	get():
+		if text_label != null:
+			return text_label.text
+		return display_text
+	set(value):
+		display_text = value
+		if text_label != null:
+			text_label.text = value
 
 @export_range(0.0,1.0) var walk_influence : float = 1.0 : 
 	get():

@@ -2,16 +2,19 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://vrss67ivmw7w"
-path="res://.godot/imported/wepon.png-1cef15235b317b15e15af2db399332f2.ctex"
+uid="uid://btcv5wxby4fgm"
+path="res://.godot/imported/first_person_charter_visor.png-adb817a598c251ea1c0b98d15c8ab044.ctex"
 metadata={
 "vram_texture": false
+}
+generator_parameters={
+"md5": "9bd7b917900491962e9f2ac1905988b6"
 }
 
 [deps]
 
-source_file="res://assets/first_person_charter/wepon.png"
-dest_files=["res://.godot/imported/wepon.png-1cef15235b317b15e15af2db399332f2.ctex"]
+source_file="res://assets/models/first_person_charter/first_person_charter_visor.png"
+dest_files=["res://.godot/imported/first_person_charter_visor.png-adb817a598c251ea1c0b98d15c8ab044.ctex"]
 
 [params]
 
@@ -21,7 +24,7 @@ compress/lossy_quality=0.7
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0
-mipmaps/generate=false
+mipmaps/generate=true
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""
@@ -31,4 +34,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=1
+detect_3d/compress_to=0

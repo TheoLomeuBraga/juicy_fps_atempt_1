@@ -1,7 +1,7 @@
 [gd_scene load_steps=29 format=3 uid="uid://b04toksfcttp8"]
 
-[ext_resource type="PackedScene" uid="uid://dd50stejxmfgy" path="res://assets/first_person_charter/first_person_charter.glb" id="1_dmo8i"]
-[ext_resource type="Script" uid="uid://bfmkxjag30dhi" path="res://assets/first_person_charter/first_person_charter_model.gd" id="2_2yo2j"]
+[ext_resource type="PackedScene" uid="uid://dd50stejxmfgy" path="res://assets/models/first_person_charter/first_person_charter.glb" id="1_dmo8i"]
+[ext_resource type="Script" uid="uid://bfmkxjag30dhi" path="res://assets/models/first_person_charter/first_person_charter_model.gd" id="2_2yo2j"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_2yo2j"]
 viewport_path = NodePath("SubViewport")
@@ -171,24 +171,23 @@ ambient_light_color = Color(1, 1, 1, 1)
 
 [node name="first_person_charter" instance=ExtResource("1_dmo8i")]
 script = ExtResource("2_2yo2j")
-walk_influence = 0.0
-walk_sway_influence = 0.0
+display_text = "12A"
 
 [node name="Skeleton3D" parent="charter_armature" index="0"]
-bones/1/position = Vector3(-0.249395, 0.168298, -0.412224)
-bones/1/rotation = Quaternion(-0.69508, 0.00113202, -0.00606537, 0.718906)
+bones/1/position = Vector3(-0.313094, 0.188006, -0.412224)
+bones/1/rotation = Quaternion(-0.698153, -0.00106161, -0.00655271, 0.715918)
 
 [node name="Cube_003" parent="charter_armature/Skeleton3D" index="0"]
-transform = Transform3D(0.999924, -0.01006, 0.00714782, 0.0102951, 0.999381, -0.0336528, -0.00680485, 0.0337238, 0.999408, -0.248847, -0.170878, 0.488845)
+transform = Transform3D(0.999912, -0.00763008, 0.0108654, 0.00790062, 0.999654, -0.0250781, -0.0106703, 0.0251617, 0.999627, -0.31226, -0.189929, 0.488862)
 
 [node name="muzle" type="RemoteTransform3D" parent="charter_armature/Skeleton3D/Cube_003" index="1"]
 transform = Transform3D(1, 3.25144e-11, 0, 2.86491e-11, 1, 4.65661e-10, 0, 0, 1, 0, 0.05, 0.7)
 
 [node name="Cube_002" parent="charter_armature/Skeleton3D" index="1"]
-transform = Transform3D(0.999924, -0.01006, 0.00714782, 0.0102951, 0.999381, -0.0336528, -0.00680485, 0.0337238, 0.999408, -0.24687, -0.256434, 0.649881)
+transform = Transform3D(0.999912, -0.00763008, 0.0108654, 0.00790062, 0.999654, -0.0250781, -0.0106703, 0.0251617, 0.999627, -0.309869, -0.274102, 0.65062)
 
 [node name="Plane" parent="charter_armature/Skeleton3D" index="2"]
-transform = Transform3D(0.999924, -0.00714782, -0.01006, 0.0102951, 0.0336528, 0.999381, -0.00680485, -0.999408, 0.0337238, -0.248847, -0.170878, 0.488845)
+transform = Transform3D(0.999912, -0.0108654, -0.00763008, 0.00790062, 0.0250781, 0.999654, -0.0106703, -0.999627, 0.0251617, -0.31226, -0.189929, 0.488862)
 
 [node name="Plane" parent="charter_armature/Skeleton3D/Plane" index="0"]
 surface_material_override/0 = SubResource("StandardMaterial3D_kc2fr")
@@ -222,8 +221,8 @@ color = Color(0, 0, 0, 1)
 [node name="RichTextLabel" type="RichTextLabel" parent="SubViewport" index="1"]
 offset_right = 64.0
 offset_bottom = 64.0
+scale = Vector2(1.4, 1)
 size_flags_vertical = 3
 theme_override_font_sizes/normal_font_size = 24
 bbcode_enabled = true
-text = "123"
-horizontal_alignment = 1
+text = "12A"

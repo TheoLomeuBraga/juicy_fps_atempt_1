@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://dd50stejxmfgy"
-path="res://.godot/imported/first_person_charter.glb-56017befe4780c906441a48e0a69a561.scn"
+path="res://.godot/imported/first_person_charter.glb-61ba67d432cd7ba9a535e63dad8a96fd.scn"
 
 [deps]
 
-source_file="res://assets/first_person_charter/first_person_charter.glb"
-dest_files=["res://.godot/imported/first_person_charter.glb-56017befe4780c906441a48e0a69a561.scn"]
+source_file="res://assets/models/first_person_charter/first_person_charter.glb"
+dest_files=["res://.godot/imported/first_person_charter.glb-61ba67d432cd7ba9a535e63dad8a96fd.scn"]
 
 [params]
 
