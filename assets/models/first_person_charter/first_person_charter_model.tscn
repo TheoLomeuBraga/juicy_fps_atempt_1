@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://b04toksfcttp8"]
+[gd_scene load_steps=29 format=3 uid="uid://b04toksfcttp8"]
 
 [ext_resource type="PackedScene" uid="uid://dd50stejxmfgy" path="res://assets/models/first_person_charter/first_person_charter.glb" id="1_dmo8i"]
 [ext_resource type="Script" uid="uid://bfmkxjag30dhi" path="res://assets/models/first_person_charter/first_person_charter_model.gd" id="2_2yo2j"]
@@ -170,36 +170,36 @@ nodes/walk_sway_influence/node = SubResource("AnimationNodeAdd2_5fvbv")
 nodes/walk_sway_influence/position = Vector2(960, 120)
 node_connections = [&"output", 0, &"walk_influence", &"shot_auto_speed", 0, &"shot_auto", &"shot_punp_speed", 0, &"shot_punp", &"shot_semi_automatico_speed", 0, &"shot_semi_automatico", &"strong_shot_time", 0, &"strong_shot", &"transition_estate", 0, &"idle", &"transition_estate", 1, &"jump", &"transition_estate", 2, &"fall", &"transition_estate", 3, &"shot_auto_speed", &"transition_estate", 4, &"strong_shot_time", &"transition_estate", 5, &"shot_punp_speed", &"transition_estate", 6, &"shot_semi_automatico_speed", &"transition_estate", 7, &"grab_wepon", &"transition_estate", 8, &"lower_weapon", &"walk_influence", 0, &"walk_sway_influence", &"walk_influence", 1, &"walk_speed", &"walk_speed", 0, &"walk", &"walk_sway_influence", 0, &"transition_estate", &"walk_sway_influence", 1, &"walk_sway_direction"]
 
-[sub_resource type="Environment" id="Environment_dmo8i"]
-background_mode = 1
-ambient_light_source = 2
-ambient_light_color = Color(1, 1, 1, 1)
-
 [node name="first_person_charter" instance=ExtResource("1_dmo8i")]
 script = ExtResource("2_2yo2j")
 display_color = Color(0, 0.697856, 0.803526, 1)
 display_text = "12A"
 
 [node name="Skeleton3D" parent="charter_armature" index="0"]
-bones/1/position = Vector3(-0.249395, 0.208166, -0.412224)
-bones/1/rotation = Quaternion(-0.715701, 0.00661065, -0.00583573, 0.698351)
+bones/1/position = Vector3(-0.249395, 0.185069, -0.412224)
+bones/1/rotation = Quaternion(-0.704141, 0.00510862, -0.00770263, 0.71)
 
 [node name="Cube_003" parent="charter_armature/Skeleton3D" index="0"]
-transform = Transform3D(0.999844, -0.017587, -0.00131107, 0.0176138, 0.999544, 0.0245245, 0.000879165, -0.0245438, 0.999698, -0.249495, -0.206286, 0.488868)
+transform = Transform3D(0.999829, -0.0181023, 0.00374401, 0.0181327, 0.999802, -0.00825149, -0.00359389, 0.00831796, 0.999959, -0.249108, -0.185702, 0.488887)
 
 [node name="Cube_003" parent="charter_armature/Skeleton3D/Cube_003" index="0"]
+layers = 2
 surface_material_override/1 = SubResource("StandardMaterial3D_2c75t")
 
 [node name="muzle" type="RemoteTransform3D" parent="charter_armature/Skeleton3D/Cube_003" index="1"]
 transform = Transform3D(1, 3.25144e-11, 0, 2.86491e-11, 1, 4.65661e-10, 0, 0, 1, 0, 0.05, 0.7)
 
 [node name="Cube_002" parent="charter_armature/Skeleton3D" index="1"]
-transform = Transform3D(0.999844, -0.017587, -0.00131107, 0.0176138, 0.999544, 0.0245245, 0.000879165, -0.0245438, 0.999698, -0.248302, -0.282324, 0.654618)
+transform = Transform3D(0.999829, -0.0181023, 0.00374401, 0.0181327, 0.999802, -0.00825149, -0.00359389, 0.00831796, 0.999959, -0.247045, -0.267131, 0.652049)
+
+[node name="Cube_002" parent="charter_armature/Skeleton3D/Cube_002" index="0"]
+layers = 2
 
 [node name="Plane" parent="charter_armature/Skeleton3D" index="2"]
-transform = Transform3D(0.999844, 0.00131107, -0.017587, 0.0176138, -0.0245245, 0.999544, 0.000879165, -0.999698, -0.0245438, -0.249495, -0.206286, 0.488868)
+transform = Transform3D(0.999829, -0.00374401, -0.0181023, 0.0181327, 0.00825149, 0.999802, -0.00359389, -0.999959, 0.00831796, -0.249108, -0.185702, 0.488887)
 
 [node name="Plane" parent="charter_armature/Skeleton3D/Plane" index="0"]
+layers = 2
 surface_material_override/0 = SubResource("StandardMaterial3D_kc2fr")
 
 [node name="AnimationTree" type="AnimationTree" parent="." index="2"]
@@ -217,10 +217,7 @@ parameters/walk_speed/scale = 0.0
 parameters/walk_sway_direction/blend_position = 0.0
 parameters/walk_sway_influence/add_amount = 1.0
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="." index="3"]
-environment = SubResource("Environment_dmo8i")
-
-[node name="SubViewport" type="SubViewport" parent="." index="4"]
+[node name="SubViewport" type="SubViewport" parent="." index="3"]
 size = Vector2i(64, 32)
 
 [node name="ColorRect" type="ColorRect" parent="SubViewport" index="0"]
