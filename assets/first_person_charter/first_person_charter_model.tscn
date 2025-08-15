@@ -1,6 +1,36 @@
-[gd_scene load_steps=24 format=3 uid="uid://b04toksfcttp8"]
+[gd_scene load_steps=25 format=3 uid="uid://b04toksfcttp8"]
 
 [ext_resource type="PackedScene" uid="uid://dd50stejxmfgy" path="res://assets/first_person_charter/first_person_charter.glb" id="1_dmo8i"]
+[ext_resource type="Script" uid="uid://bfmkxjag30dhi" path="res://assets/first_person_charter/first_person_charter_model.gd" id="2_2yo2j"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_d4c8a"]
+animation = &"fall"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_mlukq"]
+animation = &"idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_2nhtc"]
+animation = &"jump"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_xhtr8"]
+animation = &"automatic_shoots"
+
+[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_dp5we"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_amsim"]
+animation = &"pump_shot"
+
+[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_mlukq"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_2o8fk"]
+animation = &"semi_automatic_shoots"
+
+[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_xnqgh"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_dp5we"]
+animation = &"strong_shoot"
+
+[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_dtxcv"]
 
 [sub_resource type="AnimationNodeTransition" id="AnimationNodeTransition_dp5we"]
 xfade_time = 0.1
@@ -32,35 +62,6 @@ input_6/name = "shot_semi_automatic"
 input_6/auto_advance = false
 input_6/break_loop_at_end = false
 input_6/reset = true
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_d4c8a"]
-animation = &"fall"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_mlukq"]
-animation = &"idle"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_2nhtc"]
-animation = &"jump"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_xhtr8"]
-animation = &"automatic_shoots"
-
-[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_dp5we"]
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_amsim"]
-animation = &"pump_shot"
-
-[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_mlukq"]
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_2o8fk"]
-animation = &"semi_automatic_shoots"
-
-[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_xnqgh"]
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_dp5we"]
-animation = &"strong_shoot"
-
-[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_dtxcv"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_dtxcv"]
 animation = &"walk"
@@ -98,12 +99,7 @@ blend_point_2/pos = -1.0
 
 [sub_resource type="AnimationNodeAdd2" id="AnimationNodeAdd2_5fvbv"]
 
-[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_ctq12"]
-
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_dp5we"]
-graph_offset = Vector2(-484.821, 147.7)
-nodes/Transition/node = SubResource("AnimationNodeTransition_dp5we")
-nodes/Transition/position = Vector2(160, 120)
 nodes/fall/node = SubResource("AnimationNodeAnimation_d4c8a")
 nodes/fall/position = Vector2(-220, 280)
 nodes/idle/node = SubResource("AnimationNodeAnimation_mlukq")
@@ -127,6 +123,8 @@ nodes/strong_shot/node = SubResource("AnimationNodeAnimation_dp5we")
 nodes/strong_shot/position = Vector2(-520, 680)
 nodes/strong_shot_time/node = SubResource("AnimationNodeTimeScale_dtxcv")
 nodes/strong_shot_time/position = Vector2(-300, 680)
+nodes/transition_estate/node = SubResource("AnimationNodeTransition_dp5we")
+nodes/transition_estate/position = Vector2(160, 120)
 nodes/walk/node = SubResource("AnimationNodeAnimation_dtxcv")
 nodes/walk/position = Vector2(1000, 480)
 nodes/walk_influence/node = SubResource("AnimationNodeAdd2_dp5we")
@@ -134,40 +132,46 @@ nodes/walk_influence/position = Vector2(1340, 240)
 nodes/walk_speed/node = SubResource("AnimationNodeTimeScale_2nhtc")
 nodes/walk_speed/position = Vector2(1160, 440)
 nodes/walk_sway_direction/node = SubResource("AnimationNodeBlendSpace1D_aiyyq")
-nodes/walk_sway_direction/position = Vector2(520, 420)
+nodes/walk_sway_direction/position = Vector2(620, 360)
 nodes/walk_sway_influence/node = SubResource("AnimationNodeAdd2_5fvbv")
 nodes/walk_sway_influence/position = Vector2(960, 120)
-nodes/walk_sway_speed/node = SubResource("AnimationNodeTimeScale_ctq12")
-nodes/walk_sway_speed/position = Vector2(780, 400)
-node_connections = [&"Transition", 0, &"idle", &"Transition", 1, &"jump", &"Transition", 2, &"fall", &"Transition", 3, &"shot_auto_speed", &"Transition", 4, &"strong_shot_time", &"Transition", 5, &"shot_punp_speed", &"Transition", 6, &"shot_semi_automatico_speed", &"output", 0, &"walk_influence", &"shot_auto_speed", 0, &"shot_auto", &"shot_punp_speed", 0, &"shot_punp", &"shot_semi_automatico_speed", 0, &"shot_semi_automatico", &"strong_shot_time", 0, &"strong_shot", &"walk_influence", 0, &"walk_sway_influence", &"walk_influence", 1, &"walk_speed", &"walk_speed", 0, &"walk", &"walk_sway_influence", 0, &"Transition", &"walk_sway_influence", 1, &"walk_sway_speed", &"walk_sway_speed", 0, &"walk_sway_direction"]
+node_connections = [&"output", 0, &"walk_influence", &"shot_auto_speed", 0, &"shot_auto", &"shot_punp_speed", 0, &"shot_punp", &"shot_semi_automatico_speed", 0, &"shot_semi_automatico", &"strong_shot_time", 0, &"strong_shot", &"transition_estate", 0, &"idle", &"transition_estate", 1, &"jump", &"transition_estate", 2, &"fall", &"transition_estate", 3, &"shot_auto_speed", &"transition_estate", 4, &"strong_shot_time", &"transition_estate", 5, &"shot_punp_speed", &"transition_estate", 6, &"shot_semi_automatico_speed", &"walk_influence", 0, &"walk_sway_influence", &"walk_influence", 1, &"walk_speed", &"walk_speed", 0, &"walk", &"walk_sway_influence", 0, &"transition_estate", &"walk_sway_influence", 1, &"walk_sway_direction"]
+
+[sub_resource type="Environment" id="Environment_dmo8i"]
+background_mode = 1
+ambient_light_source = 2
+ambient_light_color = Color(1, 1, 1, 1)
 
 [node name="first_person_charter" instance=ExtResource("1_dmo8i")]
+script = ExtResource("2_2yo2j")
 
 [node name="Skeleton3D" parent="charter_armature" index="0"]
-bones/1/position = Vector3(-0.311744, 0.220428, -0.51528)
-bones/1/rotation = Quaternion(-0.699685, 0.000300069, -0.00312966, 0.714445)
+bones/1/position = Vector3(-0.311744, 0.246096, -0.51528)
+bones/1/rotation = Quaternion(-0.709745, 0.00350251, -0.00367666, 0.70444)
 
 [node name="Cube_003" parent="charter_armature/Skeleton3D" index="0"]
-transform = Transform3D(0.99998, -0.00480887, 0.00405268, 0.00489241, 0.99977, -0.0208626, -0.00395143, 0.020882, 0.999774, -0.311355, -0.222428, 0.611092)
+transform = Transform3D(0.999948, -0.0101542, 0.000208851, 0.0101523, 0.99992, 0.00750303, -0.000285022, -0.00750052, 0.999972, -0.311724, -0.245377, 0.611111)
 
 [node name="Cube_002" parent="charter_armature/Skeleton3D" index="1"]
-transform = Transform3D(0.99998, -0.00480887, 0.00405268, 0.00489241, 0.99977, -0.0208626, -0.00395143, 0.020882, 0.999774, -0.310044, -0.326793, 0.813747)
+transform = Transform3D(0.999948, -0.0101542, 0.000208851, 0.0101523, 0.99992, 0.00750303, -0.000285022, -0.00750052, 0.999972, -0.310664, -0.343948, 0.816648)
 
 [node name="Plane" parent="charter_armature/Skeleton3D" index="2"]
-transform = Transform3D(0.99998, -0.00405268, -0.00480887, 0.00489241, 0.0208626, 0.99977, -0.00395143, -0.999774, 0.020882, -0.311355, -0.222428, 0.611092)
+transform = Transform3D(0.999948, -0.000208851, -0.0101542, 0.0101523, -0.00750303, 0.99992, -0.000285022, -0.999972, -0.00750052, -0.311724, -0.245377, 0.611111)
 
 [node name="AnimationTree" type="AnimationTree" parent="." index="2"]
 tree_root = SubResource("AnimationNodeBlendTree_dp5we")
 anim_player = NodePath("../AnimationPlayer")
-parameters/Transition/current_state = "idle"
-parameters/Transition/transition_request = ""
-parameters/Transition/current_index = 0
 parameters/shot_auto_speed/scale = 2.0
 parameters/shot_punp_speed/scale = 1.0
 parameters/shot_semi_automatico_speed/scale = 1.2
 parameters/strong_shot_time/scale = 1.1
+parameters/transition_estate/current_state = "idle"
+parameters/transition_estate/transition_request = ""
+parameters/transition_estate/current_index = 0
 parameters/walk_influence/add_amount = 0.0
-parameters/walk_speed/scale = 1.0
+parameters/walk_speed/scale = 0.0
 parameters/walk_sway_direction/blend_position = 0.0
-parameters/walk_sway_influence/add_amount = 0.5
-parameters/walk_sway_speed/scale = 1.0
+parameters/walk_sway_influence/add_amount = 0.0
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." index="3"]
+environment = SubResource("Environment_dmo8i")
