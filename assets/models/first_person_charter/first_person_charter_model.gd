@@ -22,6 +22,9 @@ var estate_to_string : Dictionary[TransitionEstates,String]
 
 var text_label : RichTextLabel
 
+var wepon_mesh : MeshInstance3D
+var wepon_glow_material : BaseMaterial3D
+
 @export var muzle : Node3D
 
 func _ready() -> void:
@@ -29,12 +32,22 @@ func _ready() -> void:
 	
 	text_label = $SubViewport/RichTextLabel
 	
+	wepon_mesh = $charter_armature/Skeleton3D/Cube_003/Cube_003
+	wepon_glow_material = wepon_mesh.get_surface_override_material(1)
+	
 	for key : String in string_to_estate:
 		var value : TransitionEstates = string_to_estate[key]
 		estate_to_string[value] = key
 	
 	if muzle != null:
 		$charter_armature/Skeleton3D/Cube_003/muzle.remote_path = muzle.get_path()
+
+
+@export var display_color = Color.WHITE : 
+	set(value):
+		display_color = value
+		if wepon_mesh != null:
+			wepon_glow_material.emission = display_color
 
 @export_multiline var display_text = "": 
 	get():
