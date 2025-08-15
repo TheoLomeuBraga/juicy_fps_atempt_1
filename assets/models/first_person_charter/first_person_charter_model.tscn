@@ -181,11 +181,11 @@ display_color = Color(0, 0.697856, 0.803526, 1)
 display_text = "12A"
 
 [node name="Skeleton3D" parent="charter_armature" index="0"]
-bones/1/position = Vector3(-0.249395, 0.208583, -0.412224)
-bones/1/rotation = Quaternion(-0.715694, 0.00695714, -0.00624784, 0.698351)
+bones/1/position = Vector3(-0.249395, 0.208166, -0.412224)
+bones/1/rotation = Quaternion(-0.715701, 0.00661065, -0.00583573, 0.698351)
 
 [node name="Cube_003" parent="charter_armature/Skeleton3D" index="0"]
-transform = Transform3D(0.999825, -0.0186607, -0.00123135, 0.0186853, 0.999525, 0.024514, 0.000773314, -0.0245327, 0.999699, -0.249489, -0.206704, 0.488868)
+transform = Transform3D(0.999844, -0.017587, -0.00131107, 0.0176138, 0.999544, 0.0245245, 0.000879165, -0.0245438, 0.999698, -0.249495, -0.206286, 0.488868)
 
 [node name="Cube_003" parent="charter_armature/Skeleton3D/Cube_003" index="0"]
 surface_material_override/1 = SubResource("StandardMaterial3D_2c75t")
@@ -194,10 +194,10 @@ surface_material_override/1 = SubResource("StandardMaterial3D_2c75t")
 transform = Transform3D(1, 3.25144e-11, 0, 2.86491e-11, 1, 4.65661e-10, 0, 0, 1, 0, 0.05, 0.7)
 
 [node name="Cube_002" parent="charter_armature/Skeleton3D" index="1"]
-transform = Transform3D(0.999825, -0.0186607, -0.00123135, 0.0186853, 0.999525, 0.024514, 0.000773314, -0.0245327, 0.999699, -0.248196, -0.282742, 0.654617)
+transform = Transform3D(0.999844, -0.017587, -0.00131107, 0.0176138, 0.999544, 0.0245245, 0.000879165, -0.0245438, 0.999698, -0.248302, -0.282324, 0.654618)
 
 [node name="Plane" parent="charter_armature/Skeleton3D" index="2"]
-transform = Transform3D(0.999825, 0.00123135, -0.0186607, 0.0186853, -0.024514, 0.999525, 0.000773314, -0.999699, -0.0245327, -0.249489, -0.206704, 0.488868)
+transform = Transform3D(0.999844, 0.00131107, -0.017587, 0.0176138, -0.0245245, 0.999544, 0.000879165, -0.999698, -0.0245438, -0.249495, -0.206286, 0.488868)
 
 [node name="Plane" parent="charter_armature/Skeleton3D/Plane" index="0"]
 surface_material_override/0 = SubResource("StandardMaterial3D_kc2fr")
