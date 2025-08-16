@@ -4,18 +4,17 @@ class_name FPSCharterModel
 
 var animatin_tree : AnimationTree
 
-enum TransitionEstates {IDLE,GRAB_WEPON,LOWER_WEPON,JUMP,FALL,SHOT_AUTO,SHOT_STRONG,SHOT_PUNP,SHOT_SEMI_AUTOMATIC}
+enum TransitionEstates {NONE,GRAB_WEPON,LOWER_WEPON,JUMP,FALL,SHOT_AUTO,SHOT_STRONG,SHOT_SEMI_AUTOMATIC}
 
 var string_to_estate : Dictionary[String,TransitionEstates] = {
-	"" : TransitionEstates.IDLE,
-	"idle" : TransitionEstates.IDLE,
+	"none" : TransitionEstates.NONE,
+	"" : TransitionEstates.GRAB_WEPON,
 	"grab_wepon" : TransitionEstates.GRAB_WEPON,
 	"lower_wepon" : TransitionEstates.LOWER_WEPON,
 	"jump" : TransitionEstates.JUMP,
 	"fall" : TransitionEstates.FALL,
 	"shot_auto" : TransitionEstates.SHOT_AUTO,
 	"shot_strong" : TransitionEstates.SHOT_STRONG,
-	"shot_punp" : TransitionEstates.SHOT_PUNP,
 	"shot_semi_automatic" : TransitionEstates.SHOT_SEMI_AUTOMATIC,
 }
 
@@ -100,9 +99,14 @@ func _ready() -> void:
 
 
 
-@export var transition_estate : TransitionEstates = TransitionEstates.IDLE : 
+@export var transition_estate : TransitionEstates = TransitionEstates.GRAB_WEPON : 
 	get():
 		return transition_estate
 	set(value):
 		transition_estate = value
-		animatin_tree.set("parameters/transition_estate/transition_request",estate_to_string[value])
+		if animatin_tree != null:
+			animatin_tree.set("parameters/transition_estate/transition_request",estate_to_string[value])
+
+func punp_shot() -> void:
+	if animatin_tree != null:
+		animatin_tree.set("parameters/punp_shot/request",AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)

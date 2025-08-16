@@ -77,8 +77,7 @@ func floor_estate(delta: float) -> void:
 	direction.y = velocity.y
 	velocity = velocity.move_toward(direction,speed * delta * friction)
 	
-	if desired_direction == Vector3.ZERO:
-		model.transition_estate = FPSCharterModel.TransitionEstates.IDLE
+	
 	model.walk_influence = move_toward(model.walk_influence,desired_direction.length(),delta * 3.0)
 	model.walk_sway_direction = move_toward(model.walk_sway_direction,Input.get_axis("left","right"),delta * 2.0)
 	
