@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://pys8rcycmtau"]
+
+[ext_resource type="Script" uid="uid://bsmp55hyv3f27" path="res://menus/game_menus_space.gd" id="1_rt8vg"]
+[ext_resource type="PackedScene" uid="uid://g13u4vh2he6v" path="res://menus/pause/PauseMenu.tscn" id="2_6biv5"]
+
+[node name="GameMenusSpace" type="CanvasLayer"]
+process_mode = 3
+script = ExtResource("1_rt8vg")
+
+[node name="PauseMenu" parent="." instance=ExtResource("2_6biv5")]
+visible = false

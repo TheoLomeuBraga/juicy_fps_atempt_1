@@ -27,7 +27,8 @@ enum AirMovementType { NONE, FULL, PARTIAL }
 @onready var model : FPSCharterModel = $SubViewportContainer/SubViewport/Camera3D/first_person_charter
 
 func _ready() -> void:
-	pass
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+
 
 
 func fix_camera_rotation() -> void:
@@ -36,7 +37,7 @@ func fix_camera_rotation() -> void:
 	if camera.rotation_degrees.x > 90:
 		camera.rotation_degrees.x = 90
 
-func _input(event):
+func _input(event)  -> void:
 	if event is InputEventMouseMotion:
 		var joystick_camera_rotation : Vector2 = event.relative * mouse_sensitivity
 		camera.rotation.x -= joystick_camera_rotation.y
@@ -50,7 +51,7 @@ func _process(delta: float) -> void:
 	
 	fix_camera_rotation()
 
-func desired_direction() -> Vector3:
+func get_desired_direction() -> Vector3:
 	var input_direction : Vector3 = Vector3(Input.get_axis("left", "right"),0,Input.get_axis("up", "down"))
 	var dir : Vector3 = (input_direction.x * basis.x) + (input_direction.z * basis.z)
 	if dir.length() > 1:
@@ -65,8 +66,9 @@ func floor_estate(delta: float) -> void:
 	
 	if jump_buffer > 0:
 		velocity.y = jump_velocity
+		jump_buffer = 0
 	
-	var direction := desired_direction()
+	var direction : Vector3 = get_desired_direction()
 	direction *= speed
 	direction.y = velocity.y
 	velocity = velocity.move_toward(direction,speed * delta * friction)
@@ -81,13 +83,33 @@ func air_estate(delta: float) -> void:
 	
 	match air_movement_type:
 		AirMovementType.FULL:
-			var direction := desired_direction()
+			var direction : Vector3 = get_desired_direction()
 			direction *= speed
 			direction.y = velocity.y
 			velocity = velocity.move_toward(direction,speed * delta * air_movement_control)
+			
 		AirMovementType.PARTIAL:
-			pass
-	
+			var air_inpulse_direction : Vector3 = velocity
+			air_inpulse_direction.y = 0.0
+			
+			var desired_direction : Vector3 = get_desired_direction()
+			
+			if air_inpulse_direction.normalized().dot(desired_direction) > 0.0 and velocity.length() >= speed:
+				var velocity_length : float = velocity.length()
+				
+				var new_velocity : Vector3
+				
+				new_velocity = velocity.move_toward(desired_direction * speed,speed * delta * air_movement_control * 2)
+				new_velocity = new_velocity.normalized() * velocity_length
+				
+				velocity.x = new_velocity.x
+				velocity.z = new_velocity.z
+				
+			else:
+				desired_direction *= speed
+				desired_direction.y = velocity.y
+				velocity = velocity.move_toward(desired_direction,speed * delta * air_movement_control)
+
 
 func _physics_process(delta: float) -> void:
 	

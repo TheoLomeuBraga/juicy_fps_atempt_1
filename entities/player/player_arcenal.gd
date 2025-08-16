@@ -1,11 +1,13 @@
-extends PlayerMovement
+extends PlayerMovementMods
 class_name PlayerArcenal
 
-func _input(event):
-	super(event)
 
 func _ready() -> void:
 	super()
+
+func _input(event) -> void:
+	super(event)
+
 
 func _process(delta: float) -> void:
 	super(delta)
