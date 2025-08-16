@@ -23,7 +23,7 @@ func jely_effect() -> void:
 func _ready() -> void:
 	call_deferred("set_pivo")
 	call_deferred("jely_effect")
-	
+	$Control/CenterContainer/Panel/VBoxContainer/HBoxContainer/window_exit_button.pressed.connect(GameMenus.pause)
 	
 
 

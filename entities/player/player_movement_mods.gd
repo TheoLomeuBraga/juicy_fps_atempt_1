@@ -4,7 +4,7 @@ class_name PlayerMovementMods
 @export_category("Dash")
 @export var max_dash_charges : int = 1
 @export var dash_charges : float
-@export var dash_cool_down : float = 5.0
+@export var dash_cool_down : float = 2.0
 @export var dash_speed : float = 20.0
 
 func dash() -> void:
@@ -24,7 +24,7 @@ func _ready() -> void:
 	dash_charges = max_dash_charges
 
 @export_category("Air Jump")
-@export var max_air_jump_charges : int = 2
+@export var max_air_jump_charges : int = 0
 @export var air_jump_charges : float
 
 func air_estate(delta: float) -> void:
@@ -33,8 +33,9 @@ func air_estate(delta: float) -> void:
 	
 	super(delta)
 	
-	if Input.is_action_just_pressed("jump"):
+	if Input.is_action_just_pressed("jump") and air_jump_charges >= 1.0:
 		velocity.y = jump_velocity
+		air_jump_charges -= 1.0
 
 
 func _physics_process(delta: float) -> void:

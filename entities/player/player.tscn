@@ -29,6 +29,7 @@ uv1_triplanar_sharpness = 150.0
 [node name="Player" type="CharacterBody3D"]
 script = ExtResource("1_bls4j")
 air_movement_type = 2
+air_movement_control = 10.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_sfv1e")
@@ -67,6 +68,10 @@ fov = 90.0
 
 [node name="first_person_charter" parent="SubViewportContainer/SubViewport/Camera3D" instance=ExtResource("1_symyc")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0.156363, -0.166161, 0)
+walk_influence = 1.0
+walk_sway_influence = 1.0
+
+[node name="Sounds" type="Node3D" parent="."]
 
 [node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
 top_level = true

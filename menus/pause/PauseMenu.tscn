@@ -1,12 +1,18 @@
-[gd_scene load_steps=2 format=3 uid="uid://g13u4vh2he6v"]
+[gd_scene load_steps=3 format=3 uid="uid://g13u4vh2he6v"]
 
 [ext_resource type="Script" uid="uid://bn4vpltjypc3u" path="res://menus/pause/pause_menu.gd" id="1_i3u0a"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i3u0a"]
+bg_color = Color(0.192157, 0.192157, 0.392157, 0.615686)
+border_width_top = 32
+border_color = Color(0.141247, 0.000152671, 0.407306, 1)
 
 [node name="PauseMenu" type="CanvasLayer"]
 process_mode = 3
 script = ExtResource("1_i3u0a")
 
 [node name="Control" type="Control" parent="."]
+texture_filter = 1
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -24,9 +30,43 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Label" type="Label" parent="Control/CenterContainer"]
+[node name="Panel" type="Panel" parent="Control/CenterContainer"]
+custom_minimum_size = Vector2(400, 300)
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_i3u0a")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/CenterContainer/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/CenterContainer/Panel/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Control/CenterContainer/Panel/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "pause"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="window_exit_button" type="Button" parent="Control/CenterContainer/Panel/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "X"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Control/CenterContainer/Panel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="Control/CenterContainer/Panel/VBoxContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 64
 text = "PAUSE"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]

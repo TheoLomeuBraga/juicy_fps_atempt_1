@@ -28,6 +28,9 @@ enum AirMovementType { NONE, FULL, PARTIAL }
 
 func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	model.walk_speed = 1.0
+	model.walk_influence = 0.0
+	model.walk_sway_influence = 0.5
 
 
 
@@ -67,24 +70,37 @@ func floor_estate(delta: float) -> void:
 	if jump_buffer > 0:
 		velocity.y = jump_velocity
 		jump_buffer = 0
+		model.transition_estate = FPSCharterModel.TransitionEstates.JUMP
 	
-	var direction : Vector3 = get_desired_direction()
-	direction *= speed
+	var desired_direction : Vector3 = get_desired_direction()
+	var direction : Vector3 = desired_direction * speed
 	direction.y = velocity.y
 	velocity = velocity.move_toward(direction,speed * delta * friction)
+	
+	if desired_direction == Vector3.ZERO:
+		model.transition_estate = FPSCharterModel.TransitionEstates.IDLE
+	model.walk_influence = move_toward(model.walk_influence,desired_direction.length(),delta * 3.0)
+	model.walk_sway_direction = move_toward(model.walk_sway_direction,Input.get_axis("left","right"),delta * 2.0)
+	
 
 func air_estate(delta: float) -> void:
 	
 	if is_on_floor():
 		estate = PlayerEstateType.FLOOR
+		model.transition_estate = FPSCharterModel.TransitionEstates.FALL
+		
 		return
 	
 	velocity += get_gravity() * delta
 	
+	var desired_direction : Vector3 = get_desired_direction()
+	
+	if desired_direction == Vector3.ZERO:
+		return
+	
 	match air_movement_type:
 		AirMovementType.FULL:
-			var direction : Vector3 = get_desired_direction()
-			direction *= speed
+			var direction : Vector3 = desired_direction * speed
 			direction.y = velocity.y
 			velocity = velocity.move_toward(direction,speed * delta * air_movement_control)
 			
@@ -92,7 +108,7 @@ func air_estate(delta: float) -> void:
 			var air_inpulse_direction : Vector3 = velocity
 			air_inpulse_direction.y = 0.0
 			
-			var desired_direction : Vector3 = get_desired_direction()
+			
 			
 			if air_inpulse_direction.normalized().dot(desired_direction) > 0.0 and velocity.length() >= speed:
 				var velocity_length : float = velocity.length()
@@ -119,8 +135,6 @@ func _physics_process(delta: float) -> void:
 		jump_buffer = jump_buffer_time
 	
 	match estate:
-		PlayerEstateType.NONE:
-			pass
 		PlayerEstateType.FLOOR:
 			floor_estate(delta)
 		PlayerEstateType.AIR:
