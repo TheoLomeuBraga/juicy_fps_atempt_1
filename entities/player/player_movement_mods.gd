@@ -17,6 +17,8 @@ func dash() -> void:
 	velocity.z = dir.z
 	move_and_slide()
 	dash_charges -= 1.0
+	
+	$PlayerSounds/dash.play()
 
 
 func _ready() -> void:

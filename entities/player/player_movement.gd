@@ -71,6 +71,7 @@ func floor_estate(delta: float) -> void:
 		velocity.y = jump_velocity
 		jump_buffer = 0
 		model.transition_estate = FPSCharterModel.TransitionEstates.JUMP
+		$PlayerSounds/jump.play()
 	
 	var desired_direction : Vector3 = get_desired_direction()
 	var direction : Vector3 = desired_direction * speed
@@ -87,7 +88,7 @@ func air_estate(delta: float) -> void:
 	if is_on_floor():
 		estate = PlayerEstateType.FLOOR
 		model.transition_estate = FPSCharterModel.TransitionEstates.FALL
-		
+		$PlayerSounds/fall.play()
 		return
 	
 	velocity += get_gravity() * delta

@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://54tahtxj4gpu"]
+[gd_scene load_steps=18 format=3 uid="uid://54tahtxj4gpu"]
 
 [ext_resource type="Script" uid="uid://dbuguuu7gt0k0" path="res://entities/player/player_arcenal.gd" id="1_bls4j"]
 [ext_resource type="PackedScene" uid="uid://b04toksfcttp8" path="res://assets/models/first_person_charter/first_person_charter_model.tscn" id="1_symyc"]
@@ -6,6 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://w1pjujljh62b" path="res://assets/textures/wall_texture.png" id="3_bls4j"]
 [ext_resource type="AudioStream" uid="uid://dyai0mbn0nvn0" path="res://sounds/shot.wav" id="3_fkugw"]
 [ext_resource type="Script" uid="uid://y4ai2mt5dx3a" path="res://entities/player/pitch_randomizer.gd" id="4_8fjmc"]
+[ext_resource type="AudioStream" uid="uid://b6a7qjqd3pfyq" path="res://sounds/dash.wav" id="5_26q78"]
+[ext_resource type="AudioStream" uid="uid://ct5nvv7wu3470" path="res://sounds/hit.wav" id="6_26q78"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_sfv1e"]
 
@@ -155,7 +157,7 @@ transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0.1563
 muzle = NodePath("../../../../Muzle")
 
 [node name="Muzle" type="Node3D" parent="."]
-transform = Transform3D(-1, 8.18557e-05, 5.4836e-05, 8.1897e-05, 1, 0.000753999, -5.47743e-05, 0.000753999, -1, 0.405804, 0.2921, -1.18885)
+transform = Transform3D(-0.99996, 0.00890363, 0.0005932, 0.00891024, 0.999885, 0.0122651, -0.000483929, 0.0122698, -0.999925, 0.406664, 0.293351, -1.18822)
 
 [node name="MuzleMesh" type="MeshInstance3D" parent="Muzle"]
 transform = Transform3D(0.999998, 0.00173186, 0.000512823, -0.00172973, 0.99999, -0.00412733, -0.000519966, 0.00412644, 0.999991, 0, 0, 0.2)
@@ -175,6 +177,21 @@ libraries = {
 }
 
 [node name="PlayerSounds" type="Node3D" parent="."]
+
+[node name="jump" type="AudioStreamPlayer" parent="PlayerSounds"]
+stream = ExtResource("5_26q78")
+volume_db = -10.0
+pitch_scale = 4.0
+
+[node name="fall" type="AudioStreamPlayer" parent="PlayerSounds"]
+stream = ExtResource("6_26q78")
+volume_db = -10.0
+pitch_scale = 1.2
+
+[node name="dash" type="AudioStreamPlayer" parent="PlayerSounds"]
+stream = ExtResource("5_26q78")
+volume_db = -10.0
+pitch_scale = 1.2
 
 [node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
 top_level = true
