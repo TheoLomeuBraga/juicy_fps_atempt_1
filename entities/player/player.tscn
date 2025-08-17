@@ -122,20 +122,20 @@ shape = SubResource("CapsuleShape3D_sfv1e")
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
 cull_mask = 1
+doppler_tracking = 2
 current = true
 fov = 90.0
 
 [node name="RemoteCameraTransform3D" type="RemoteTransform3D" parent="Camera3D"]
 remote_path = NodePath("../../SubViewportContainer/SubViewport/Camera3D")
 
-[node name="AudioListener3D" type="AudioListener3D" parent="Camera3D"]
-
 [node name="Muzle" type="Node3D" parent="."]
-transform = Transform3D(-0.999953, 0.00962938, -0.00107671, 0.0096279, 0.999953, 0.0013727, 0.00108987, 0.0013622, -0.999999, 0.405403, 0.292552, -1.18882)
+transform = Transform3D(-1, 0.000367217, -0.000593687, 0.000369971, 0.999989, -0.00464594, 0.000591975, -0.00464618, -0.999989, 0.405315, 0.291824, -1.18911)
 
 [node name="MuzleMesh" type="MeshInstance3D" parent="Muzle"]
 transform = Transform3D(0.999998, 0.00173186, 0.000512823, -0.00172973, 0.99999, -0.00412733, -0.000519966, 0.00412644, 0.999991, 0, 0, 0.2)
 visible = false
+layers = 2
 mesh = SubResource("SphereMesh_fkugw")
 
 [node name="MuzleSounds" type="Node3D" parent="Muzle"]

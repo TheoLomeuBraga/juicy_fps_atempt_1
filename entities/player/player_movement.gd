@@ -30,7 +30,7 @@ func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	model.walk_speed = 1.0
 	model.walk_influence = 0.0
-	model.walk_sway_influence = 0.5
+	model.walk_sway_influence = 0.8
 
 
 
@@ -61,6 +61,12 @@ func get_desired_direction() -> Vector3:
 		dir = dir.normalized()
 	return dir
 
+func jump(new_jump_velocity : float = jump_velocity) -> void:
+	velocity.y = new_jump_velocity
+	jump_buffer = 0
+	model.transition_estate = FPSCharterModel.TransitionEstates.JUMP
+	$PlayerSounds/jump.play()
+
 var jump_buffer : float = 0.0
 func floor_estate(delta: float) -> void:
 	if not is_on_floor():
@@ -68,10 +74,7 @@ func floor_estate(delta: float) -> void:
 		return
 	
 	if jump_buffer > 0:
-		velocity.y = jump_velocity
-		jump_buffer = 0
-		model.transition_estate = FPSCharterModel.TransitionEstates.JUMP
-		$PlayerSounds/jump.play()
+		jump()
 	
 	var desired_direction : Vector3 = get_desired_direction()
 	var direction : Vector3 = desired_direction * speed
@@ -111,11 +114,11 @@ func air_estate(delta: float) -> void:
 			
 			
 			if air_inpulse_direction.normalized().dot(desired_direction) > 0.0 and velocity.length() >= speed:
-				var velocity_length : float = velocity.length()
+				var velocity_length : float = air_inpulse_direction.length()
 				
 				var new_velocity : Vector3
 				
-				new_velocity = velocity.move_toward(desired_direction * speed,speed * delta * air_movement_control * 2)
+				new_velocity = air_inpulse_direction.move_toward(desired_direction * speed,speed * delta * air_movement_control * 2)
 				new_velocity = new_velocity.normalized() * velocity_length
 				
 				velocity.x = new_velocity.x
@@ -123,8 +126,16 @@ func air_estate(delta: float) -> void:
 				
 			else:
 				desired_direction *= speed
-				desired_direction.y = velocity.y
-				velocity = velocity.move_toward(desired_direction,speed * delta * air_movement_control)
+				desired_direction.y = 0
+				
+				var new_velocity : Vector3 = velocity.move_toward(desired_direction,speed * delta * air_movement_control)
+				new_velocity.y = 0
+				
+				
+				velocity.x = new_velocity.x
+				velocity.z = new_velocity.z
+	
+	model.walk_sway_direction = move_toward(model.walk_sway_direction,0.0,delta * 2.0)
 
 
 func _physics_process(delta: float) -> void:
@@ -140,4 +151,9 @@ func _physics_process(delta: float) -> void:
 		PlayerEstateType.AIR:
 			air_estate(delta)
 	
+	#print("velocity: ",velocity.length())
+	
 	move_and_slide()
+	
+	
+	
