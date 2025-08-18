@@ -45,13 +45,16 @@ func air_estate(delta: float) -> void:
 	if jump_buffer > 0 and wall_jump_charges >= 1.0 and is_on_wall_only():
 		if get_wall_normal().dot(basis.z) > 0:
 			jump(jump_velocity*2)
+			var new_velocity : Vector3 = basis.z * speed * 2
+			velocity.x = new_velocity.x
+			velocity.z = new_velocity.z
 		else:
 			jump(jump_velocity)
-			var new_velocity : Vector3 = basis.z * speed * 3
+			var new_velocity : Vector3 = basis.z * speed * 3.5
 			velocity.x = -new_velocity.x
 			velocity.z = -new_velocity.z
 		
-		air_jump_charges -= 1.0
+		wall_jump_charges -= 1.0
 	
 	if Input.is_action_just_released("dash") and dash_charges >= 1.0:
 		dash()

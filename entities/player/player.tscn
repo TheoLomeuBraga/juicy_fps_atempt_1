@@ -130,7 +130,7 @@ fov = 90.0
 remote_path = NodePath("../../SubViewportContainer/SubViewport/Camera3D")
 
 [node name="Muzle" type="Node3D" parent="."]
-transform = Transform3D(-1, 0.000367217, -0.000593687, 0.000369971, 0.999989, -0.00464594, 0.000591975, -0.00464618, -0.999989, 0.405315, 0.291824, -1.18911)
+transform = Transform3D(-0.999951, 0.00985019, -0.000731089, 0.00984733, 0.999944, 0.00381684, 0.000768644, 0.00380945, -0.999992, 0.405683, 0.292645, -1.18869)
 
 [node name="MuzleMesh" type="MeshInstance3D" parent="Muzle"]
 transform = Transform3D(0.999998, 0.00173186, 0.000512823, -0.00172973, 0.99999, -0.00412733, -0.000519966, 0.00412644, 0.999991, 0, 0, 0.2)

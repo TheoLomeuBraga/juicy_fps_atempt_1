@@ -24,8 +24,8 @@
      inkscape:deskcolor="#505050"
      inkscape:document-units="mm"
      inkscape:zoom="0.087526305"
-     inkscape:cx="331.32897"
-     inkscape:cy="2273.6022"
+     inkscape:cx="331.32896"
+     inkscape:cy="2262.1771"
      inkscape:window-width="2560"
      inkscape:window-height="995"
      inkscape:window-x="0"
@@ -39,12 +39,12 @@
      inkscape:groupmode="layer"
      id="layer1">
     <path
-       style="fill:none;stroke:#1600b9;stroke-width:50;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:1;stroke-dasharray:none;paint-order:stroke markers fill"
+       style="fill:none;stroke:#009db9;stroke-width:50;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:1;stroke-dasharray:none;paint-order:stroke markers fill;stroke-opacity:1"
        d="M 79.088002,889.20567 V 79.088003 H 942.6435"
        id="path1"
        sodipodi:nodetypes="ccc" />
     <path
-       style="fill:none;stroke:#1600b9;stroke-width:49.9999;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1;stroke-dasharray:none;paint-order:stroke markers fill"
+       style="fill:none;stroke:#009db9;stroke-width:49.9999;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1;stroke-dasharray:none;paint-order:stroke markers fill;stroke-opacity:1"
        id="path2"
        sodipodi:type="arc"
        sodipodi:cx="352.16794"
@@ -57,7 +57,7 @@
        sodipodi:arc-type="arc"
        d="M 479.19192,226.09415 A 164.74808,164.74808 0 0 1 457.95784,457.30263 164.74808,164.74808 0 0 1 226.60797,437.66888 164.74808,164.74808 0 0 1 244.64044,206.18869 164.74808,164.74808 0 0 1 476.23986,222.61904" />
     <path
-       style="fill:none;stroke:#1600b9;stroke-width:49.9999;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1;stroke-dasharray:none;paint-order:stroke markers fill"
+       style="fill:none;stroke:#009db9;stroke-width:49.9999;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1;stroke-dasharray:none;paint-order:stroke markers fill;stroke-opacity:1"
        d="M 544.12213,516.91603 926.51907,899.31297"
        id="path3" />
   </g>
