@@ -198,11 +198,11 @@ walk_sway_influence = 0.0
 transition_estate = 0
 
 [node name="Skeleton3D" parent="charter_armature" index="0"]
-bones/1/position = Vector3(-0.249395, 0.185308, -0.412224)
-bones/1/rotation = Quaternion(-0.704131, 0.00216028, -0.00386547, 0.710056)
+bones/1/position = Vector3(-0.249395, 0.188054, -0.412224)
+bones/1/rotation = Quaternion(-0.705288, -8.21113e-05, -0.000396596, 0.708921)
 
 [node name="Cube_003" parent="charter_armature/Skeleton3D" index="0"]
-transform = Transform3D(0.999961, -0.00851199, 0.00244782, 0.0085322, 0.999929, -0.00836819, -0.00237641, 0.0083887, 0.999962, -0.249207, -0.185949, 0.488888)
+transform = Transform3D(1, -0.000443569, 0.00067879, 0.00044705, 0.999987, -0.00513667, -0.000676503, 0.00513697, 0.999987, -0.249343, -0.188448, 0.488889)
 
 [node name="Cube_003" parent="charter_armature/Skeleton3D/Cube_003" index="0"]
 layers = 2
@@ -212,13 +212,13 @@ surface_material_override/1 = SubResource("StandardMaterial3D_2c75t")
 transform = Transform3D(1, 3.25144e-11, 0, 2.86491e-11, 1, 4.65661e-10, 0, 0, 1, 0, 0.05, 0.7)
 
 [node name="Cube_002" parent="charter_armature/Skeleton3D" index="1"]
-transform = Transform3D(0.999961, -0.00851199, 0.00244782, 0.0085322, 0.999929, -0.00836819, -0.00237641, 0.0083887, 0.999962, -0.248124, -0.267407, 0.652044)
+transform = Transform3D(1, -0.000443569, 0.00067879, 0.00044705, 0.999987, -0.00513667, -0.000676503, 0.00513697, 0.999987, -0.249196, -0.269381, 0.65231)
 
 [node name="Cube_002" parent="charter_armature/Skeleton3D/Cube_002" index="0"]
 layers = 2
 
 [node name="Plane" parent="charter_armature/Skeleton3D" index="2"]
-transform = Transform3D(0.999961, -0.00244782, -0.00851199, 0.0085322, 0.00836819, 0.999929, -0.00237641, -0.999962, 0.0083887, -0.249207, -0.185949, 0.488888)
+transform = Transform3D(1, -0.00067879, -0.000443569, 0.00044705, 0.00513667, 0.999987, -0.000676503, -0.999987, 0.00513697, -0.249343, -0.188448, 0.488889)
 
 [node name="Plane" parent="charter_armature/Skeleton3D/Plane" index="0"]
 layers = 2

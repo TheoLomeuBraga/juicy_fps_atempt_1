@@ -1,0 +1,48 @@
+[gd_scene load_steps=9 format=3 uid="uid://c4diri83t8ve"]
+
+[ext_resource type="Script" uid="uid://2jvqw53gq5le" path="res://entities/damage_dealers/base_bullet/base_bullet.gd" id="1_r5sto"]
+[ext_resource type="Script" uid="uid://cl3ymj1ygoaap" path="res://generic_script/damage_info.gd" id="2_36d77"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_36d77"]
+radius = 0.2
+
+[sub_resource type="Resource" id="Resource_jaqs8"]
+script = ExtResource("2_36d77")
+damage = 1
+faction = 1
+metadata/_custom_type_script = "uid://cl3ymj1ygoaap"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r5sto"]
+cull_mode = 1
+shading_mode = 0
+albedo_color = Color(0, 1, 1, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_36d77"]
+material = SubResource("StandardMaterial3D_r5sto")
+radial_segments = 8
+rings = 3
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jaqs8"]
+cull_mode = 1
+shading_mode = 0
+
+[sub_resource type="SphereMesh" id="SphereMesh_hv7rr"]
+material = SubResource("StandardMaterial3D_jaqs8")
+radius = 0.25
+height = 0.5
+radial_segments = 8
+rings = 3
+
+[node name="CharterBullet" type="ShapeCast3D"]
+shape = SubResource("SphereShape3D_36d77")
+target_position = Vector3(0, 0, 0)
+script = ExtResource("1_r5sto")
+damage_info = SubResource("Resource_jaqs8")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+mesh = SubResource("SphereMesh_36d77")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="MeshInstance3D"]
+mesh = SubResource("SphereMesh_hv7rr")
+skeleton = NodePath("../..")
