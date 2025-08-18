@@ -75,6 +75,7 @@ func floor_estate(delta: float) -> void:
 	
 	if jump_buffer > 0:
 		jump()
+		return
 	
 	var desired_direction : Vector3 = get_desired_direction()
 	var direction : Vector3 = desired_direction * speed

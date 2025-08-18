@@ -1,0 +1,26 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://dtt41854r34ul"]
+
+[sub_resource type="Shader" id="Shader_5wl4i"]
+code = "// NOTE: Shader automatically converted from Godot Engine 4.4.1.stable's StandardMaterial3D.
+
+shader_type spatial;
+render_mode blend_mix, depth_draw_opaque, cull_back, diffuse_burley, specular_schlick_ggx, unshaded;
+
+uniform vec4 color : source_color;
+
+
+
+void fragment() {
+	
+	vec2 base_uv = UV;
+	ALBEDO = color.rgb;
+	ALPHA = (1.0 - dot(VIEW,NORMAL)) * color.a;
+	
+}
+"
+
+[resource]
+resource_local_to_scene = true
+render_priority = 0
+shader = SubResource("Shader_5wl4i")
+shader_parameter/color = Color(0, 0, 0, 1)

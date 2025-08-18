@@ -1,0 +1,36 @@
+[gd_scene load_steps=8 format=3 uid="uid://dq6pc6bk2njuy"]
+
+[ext_resource type="Script" uid="uid://bst3sybrbqdqj" path="res://entities/test_dumy/test_dumy.gd" id="1_uu5b1"]
+[ext_resource type="Script" uid="uid://cl3ymj1ygoaap" path="res://generic_script/damage_info.gd" id="2_8854m"]
+[ext_resource type="Script" uid="uid://dci3pq65ilcom" path="res://generic_script/charter_stats.gd" id="2_r70oh"]
+
+[sub_resource type="Resource" id="Resource_yr56d"]
+script = ExtResource("2_8854m")
+damage = 1
+faction = 0
+metadata/_custom_type_script = "uid://cl3ymj1ygoaap"
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_uu5b1"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hehmg"]
+albedo_color = Color(0.255659, 0.255659, 0.255659, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_bhdsw"]
+material = SubResource("StandardMaterial3D_hehmg")
+radial_segments = 8
+rings = 3
+
+[node name="TestDumy" type="CharacterBody3D"]
+script = ExtResource("1_uu5b1")
+damage_info = SubResource("Resource_yr56d")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_uu5b1")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_bhdsw")
+
+[node name="CharterStats" type="Node" parent="."]
+script = ExtResource("2_r70oh")
+faction = 2
+metadata/_custom_type_script = "uid://dci3pq65ilcom"

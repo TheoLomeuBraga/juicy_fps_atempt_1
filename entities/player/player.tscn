@@ -1,11 +1,13 @@
-[gd_scene load_steps=19 format=3 uid="uid://54tahtxj4gpu"]
+[gd_scene load_steps=21 format=3 uid="uid://54tahtxj4gpu"]
 
 [ext_resource type="Script" uid="uid://dbuguuu7gt0k0" path="res://entities/player/player_arcenal.gd" id="1_bls4j"]
 [ext_resource type="PackedScene" uid="uid://b04toksfcttp8" path="res://assets/models/first_person_charter/first_person_charter_model.tscn" id="1_symyc"]
 [ext_resource type="Texture2D" uid="uid://cs66dt8d1r4oo" path="res://assets/textures/floor_texture.png" id="2_sglur"]
+[ext_resource type="Script" uid="uid://dci3pq65ilcom" path="res://generic_script/charter_stats.gd" id="2_wvtmh"]
 [ext_resource type="Texture2D" uid="uid://w1pjujljh62b" path="res://assets/textures/wall_texture.png" id="3_bls4j"]
 [ext_resource type="AudioStream" uid="uid://dyai0mbn0nvn0" path="res://sounds/shot.wav" id="3_fkugw"]
 [ext_resource type="Script" uid="uid://y4ai2mt5dx3a" path="res://entities/player/pitch_randomizer.gd" id="4_8fjmc"]
+[ext_resource type="PackedScene" uid="uid://dq6pc6bk2njuy" path="res://entities/test_dumy/test_dumy.tscn" id="5_7thud"]
 [ext_resource type="AudioStream" uid="uid://b6a7qjqd3pfyq" path="res://sounds/dash.wav" id="5_26q78"]
 [ext_resource type="AudioStream" uid="uid://ct5nvv7wu3470" path="res://sounds/hit.wav" id="6_26q78"]
 [ext_resource type="Texture2D" uid="uid://b6t5g84gkeslu" path="res://icon.svg" id="7_bectd"]
@@ -116,6 +118,10 @@ script = ExtResource("1_bls4j")
 air_movement_type = 2
 air_movement_control = 10.0
 
+[node name="CharterStats" type="Node" parent="."]
+script = ExtResource("2_wvtmh")
+metadata/_custom_type_script = "uid://dci3pq65ilcom"
+
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_sfv1e")
 
@@ -130,7 +136,7 @@ fov = 90.0
 remote_path = NodePath("../../SubViewportContainer/SubViewport/Camera3D")
 
 [node name="Muzle" type="Node3D" parent="."]
-transform = Transform3D(-0.999951, 0.00985019, -0.000731089, 0.00984733, 0.999944, 0.00381684, 0.000768644, 0.00380945, -0.999992, 0.405683, 0.292645, -1.18869)
+transform = Transform3D(-1, 5.57035e-05, -0.000158672, 5.59538e-05, 0.999999, -0.00157762, 0.000158584, -0.00157762, -0.999999, 0.405637, 0.291999, -1.18897)
 
 [node name="MuzleMesh" type="MeshInstance3D" parent="Muzle"]
 transform = Transform3D(0.999998, 0.00173186, 0.000512823, -0.00172973, 0.99999, -0.00412733, -0.000519966, 0.00412644, 0.999991, 0, 0, 0.2)
@@ -262,3 +268,6 @@ material = SubResource("StandardMaterial3D_8fjmc")
 transform = Transform3D(-7.74821e-08, 0, 1, 0, 1, 0, -1, 0, -7.74821e-08, -49, -58, 15)
 size = Vector3(41, 3, 13)
 material = SubResource("StandardMaterial3D_8fjmc")
+
+[node name="TestDumy" parent="CSGCombiner3D" instance=ExtResource("5_7thud")]
+transform = Transform3D(0.99998, -0.00599348, 0.00181544, 0.00595839, 0.999806, 0.0187511, -0.00192747, -0.01874, 0.999822, 10.2068, -0.515815, -0.645809)
