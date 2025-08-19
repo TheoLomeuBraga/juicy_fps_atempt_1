@@ -44,7 +44,9 @@ func deal_damage(damage_info : DamageInfo) -> void:
 		
 		tween.tween_property(self, "display_color:a", 0, 0.2).set_trans(Tween.TRANS_LINEAR)
 
-static func deal_damage_to(node : Node,damage_info : DamageInfo) -> void:
+const damage_fx : PackedScene = preload("res://generic_script/damage_fx.tscn")
+
+static func deal_damage_to(node : Node,damage_info : DamageInfo) -> bool:
 	var damage_target : CharterStats
 	if node is CharterStats:
 		damage_target = node
@@ -55,6 +57,15 @@ static func deal_damage_to(node : Node,damage_info : DamageInfo) -> void:
 	
 	if damage_target != null:
 		damage_target.deal_damage(damage_info)
+		
+		var damage_position : Node3D = node
+		if damage_position != null:
+			var d : Node3D = damage_fx.instantiate()
+			node.add_child(d)
+			d.global_position = damage_position.global_position
+		
+		return true
+	return false
 
 func _process(delta: float) -> void:
 	display_material.set_shader_parameter("color", display_color)

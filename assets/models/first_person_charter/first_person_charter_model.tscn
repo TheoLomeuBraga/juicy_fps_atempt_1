@@ -193,16 +193,16 @@ node_connections = [&"Add2", 0, &"punp_shot", &"Add2", 1, &"idle", &"output", 0,
 script = ExtResource("2_2yo2j")
 display_color = Color(0, 0.697856, 0.803526, 1)
 display_text = "12A"
-walk_influence = -1.0
+walk_influence = 0.0
 walk_sway_influence = 0.0
 transition_estate = 0
 
 [node name="Skeleton3D" parent="charter_armature" index="0"]
-bones/1/position = Vector3(-0.249395, 0.188054, -0.412224)
-bones/1/rotation = Quaternion(-0.705288, -8.21113e-05, -0.000396596, 0.708921)
+bones/1/position = Vector3(-0.249395, 0.195084, -0.412224)
+bones/1/rotation = Quaternion(-0.708805, 0.000583691, -0.000361243, 0.705404)
 
 [node name="Cube_003" parent="charter_armature/Skeleton3D" index="0"]
-transform = Transform3D(1, -0.000443569, 0.00067879, 0.00044705, 0.999987, -0.00513667, -0.000676503, 0.00513697, 0.999987, -0.249343, -0.188448, 0.488889)
+transform = Transform3D(0.999999, -0.00133615, -0.000317146, 0.00133766, 0.999988, 0.00480855, 0.000310717, -0.00480902, 0.999988, -0.249419, -0.194716, 0.48889)
 
 [node name="Cube_003" parent="charter_armature/Skeleton3D/Cube_003" index="0"]
 layers = 2
@@ -212,13 +212,13 @@ surface_material_override/1 = SubResource("StandardMaterial3D_2c75t")
 transform = Transform3D(1, 3.25144e-11, 0, 2.86491e-11, 1, 4.65661e-10, 0, 0, 1, 0, 0.05, 0.7)
 
 [node name="Cube_002" parent="charter_armature/Skeleton3D" index="1"]
-transform = Transform3D(1, -0.000443569, 0.00067879, 0.00044705, 0.999987, -0.00513667, -0.000676503, 0.00513697, 0.999987, -0.249196, -0.269381, 0.65231)
+transform = Transform3D(0.999999, -0.00133615, -0.000317146, 0.00133766, 0.999988, 0.00480855, 0.000310717, -0.00480902, 0.999988, -0.249364, -0.274019, 0.653107)
 
 [node name="Cube_002" parent="charter_armature/Skeleton3D/Cube_002" index="0"]
 layers = 2
 
 [node name="Plane" parent="charter_armature/Skeleton3D" index="2"]
-transform = Transform3D(1, -0.00067879, -0.000443569, 0.00044705, 0.00513667, 0.999987, -0.000676503, -0.999987, 0.00513697, -0.249343, -0.188448, 0.488889)
+transform = Transform3D(0.999999, 0.000317146, -0.00133615, 0.00133766, -0.00480855, 0.999988, 0.000310717, -0.999988, -0.00480902, -0.249419, -0.194716, 0.48889)
 
 [node name="Plane" parent="charter_armature/Skeleton3D/Plane" index="0"]
 layers = 2

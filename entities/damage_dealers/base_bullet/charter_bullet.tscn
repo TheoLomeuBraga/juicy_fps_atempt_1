@@ -33,14 +33,16 @@ height = 0.5
 radial_segments = 8
 rings = 3
 
-[node name="CharterBullet" type="ShapeCast3D"]
+[node name="CharterBullet" type="ShapeCast3D" node_paths=PackedStringArray("display_model")]
 shape = SubResource("SphereShape3D_36d77")
 target_position = Vector3(0, 0, 0)
 script = ExtResource("1_r5sto")
 damage_info = SubResource("Resource_jaqs8")
+speed = 20.0
+display_model = NodePath("MeshInstance3D")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
 mesh = SubResource("SphereMesh_36d77")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="MeshInstance3D"]
