@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://dq6pc6bk2njuy"]
+[gd_scene load_steps=12 format=3 uid="uid://dq6pc6bk2njuy"]
 
 [ext_resource type="Script" uid="uid://bst3sybrbqdqj" path="res://entities/test_dumy/test_dumy.gd" id="1_uu5b1"]
 [ext_resource type="Script" uid="uid://cl3ymj1ygoaap" path="res://generic_script/damage_info.gd" id="2_8854m"]
@@ -10,27 +10,61 @@ damage = 1
 faction = 0
 metadata/_custom_type_script = "uid://cl3ymj1ygoaap"
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_uu5b1"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8854m"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hehmg"]
-albedo_color = Color(0.255659, 0.255659, 0.255659, 1)
+[sub_resource type="CylinderMesh" id="CylinderMesh_yr56d"]
+material = SubResource("StandardMaterial3D_8854m")
+height = 0.1
 
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_bhdsw"]
-material = SubResource("StandardMaterial3D_hehmg")
-radial_segments = 8
-rings = 3
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f2kag"]
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_hbndh"]
+material = SubResource("StandardMaterial3D_f2kag")
+top_radius = 0.4
+bottom_radius = 0.4
+height = 0.15
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_8854m"]
+material = SubResource("StandardMaterial3D_8854m")
+top_radius = 0.25
+bottom_radius = 0.25
+height = 0.2
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_f2kag"]
+material = SubResource("StandardMaterial3D_f2kag")
+top_radius = 0.1
+bottom_radius = 0.1
+height = 0.25
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_8854m"]
+height = 0.25
 
 [node name="TestDumy" type="CharacterBody3D"]
 script = ExtResource("1_uu5b1")
 damage_info = SubResource("Resource_yr56d")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-shape = SubResource("CapsuleShape3D_uu5b1")
-
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-mesh = SubResource("CapsuleMesh_bhdsw")
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+mesh = SubResource("CylinderMesh_yr56d")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="MeshInstance3D"]
+mesh = SubResource("CylinderMesh_hbndh")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="MeshInstance3D/MeshInstance3D2"]
+mesh = SubResource("CylinderMesh_8854m")
+skeleton = NodePath("../../..")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="MeshInstance3D/MeshInstance3D2/MeshInstance3D3"]
+mesh = SubResource("CylinderMesh_f2kag")
+skeleton = NodePath("../../../..")
 
 [node name="CharterStats" type="Node" parent="."]
 script = ExtResource("2_r70oh")
 faction = 2
 metadata/_custom_type_script = "uid://dci3pq65ilcom"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+shape = SubResource("CylinderShape3D_8854m")

@@ -15,6 +15,7 @@ func _ready() -> void:
 @onready var muzle_animator : AnimationPlayer = $Muzle/AnimationPlayer
 
 const shotgun_cooldown : float = 1.1333
+const shotgun_knock_back : float = 8.0
 const machinegun_cooldown : float = 0.1
 const machinegun_animation_speed : float = 1.25
 var shot_cool_down : float = 0.0
@@ -61,6 +62,13 @@ func _physics_process(delta: float) -> void:
 			var bullet : BaseBullet = spawn_bullet()
 			bullet.rotation_degrees.x += rng.randf_range(-10.0,10.0)
 			bullet.rotation_degrees.y += rng.randf_range(-10.0,10.0)
+		
+		if estate == PlayerEstateType.FLOOR:
+			var add_velocity : Vector3 = camera.global_basis.z * shotgun_knock_back
+			add_velocity.y = 0
+			velocity += add_velocity
+		elif estate == PlayerEstateType.AIR:
+			velocity += camera.global_basis.z * shotgun_knock_back
 		
 		shot_cool_down = shotgun_cooldown
 	

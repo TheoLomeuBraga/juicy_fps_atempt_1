@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://54tahtxj4gpu"]
+[gd_scene load_steps=29 format=3 uid="uid://54tahtxj4gpu"]
 
 [ext_resource type="Script" uid="uid://dbuguuu7gt0k0" path="res://entities/player/player_arcenal.gd" id="1_bls4j"]
 [ext_resource type="PackedScene" uid="uid://b04toksfcttp8" path="res://assets/models/first_person_charter/first_person_charter_model.tscn" id="1_symyc"]
@@ -98,11 +98,6 @@ _data = {
 &"muzle_shot": SubResource("Animation_bls4j")
 }
 
-[sub_resource type="Environment" id="Environment_abrql"]
-background_mode = 1
-ambient_light_source = 2
-ambient_light_color = Color(1, 1, 1, 1)
-
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fkugw"]
 albedo_texture = ExtResource("10_a1qjk")
 uv1_triplanar = true
@@ -142,6 +137,23 @@ uv1_triplanar = true
 uv1_triplanar_sharpness = 35.5062
 texture_filter = 2
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_a1qjk"]
+size = Vector3(100, 1, 100)
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_a1qjk"]
+sky_curve = 0.128547
+
+[sub_resource type="Sky" id="Sky_j3ovn"]
+sky_material = SubResource("ProceduralSkyMaterial_a1qjk")
+
+[sub_resource type="Environment" id="Environment_afbqv"]
+background_mode = 2
+background_color = Color(1, 1, 1, 1)
+sky = SubResource("Sky_j3ovn")
+ambient_light_source = 2
+ambient_light_color = Color(1, 1, 1, 1)
+tonemap_mode = 2
+
 [node name="Player" type="CharacterBody3D"]
 script = ExtResource("1_bls4j")
 bullet_scene = ExtResource("2_a1qjk")
@@ -166,7 +178,7 @@ fov = 90.0
 remote_path = NodePath("../../SubViewportContainer/SubViewport/Camera3D")
 
 [node name="Muzle" type="Node3D" parent="."]
-transform = Transform3D(-0.999976, 0.0059866, -0.0035621, 0.00604492, 0.999844, -0.0165927, 0.00346221, -0.0166139, -0.999856, 0.403291, 0.290614, -1.18961)
+transform = Transform3D(-0.999996, 0.00185056, -0.00192017, 0.00187158, 0.999938, -0.0110026, 0.00189969, -0.0110062, -0.999938, 0.404359, 0.291698, -1.18939)
 
 [node name="MuzleMesh" type="MeshInstance3D" parent="Muzle"]
 transform = Transform3D(0.999998, 0.00173186, 0.000512823, -0.00172973, 0.99999, -0.00412733, -0.000519966, 0.00412644, 0.999991, 0, 0, 0.2)
@@ -230,7 +242,6 @@ fov = 90.0
 [node name="first_person_charter" parent="SubViewportContainer/SubViewport/Camera3D" node_paths=PackedStringArray("muzle") instance=ExtResource("1_symyc")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0.156363, -0.166161, 0)
 muzle = NodePath("../../../../Muzle")
-walk_influence = -1.0
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
 anchors_preset = 15
@@ -251,9 +262,6 @@ expand_mode = 1
 [node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
 top_level = true
 use_collision = true
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="CSGCombiner3D"]
-environment = SubResource("Environment_abrql")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0)
@@ -291,14 +299,41 @@ transform = Transform3D(-2.52327e-07, 0, 1, 0, 1, 0, -1, 0, -2.52327e-07, -6.000
 size = Vector3(1, 16, 100)
 material = SubResource("StandardMaterial3D_gx6sm")
 
+[node name="StaticBody3D" type="StaticBody3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 13, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CSGCombiner3D/StaticBody3D"]
+shape = SubResource("BoxShape3D_a1qjk")
+
 [node name="TestDumy" parent="CSGCombiner3D" instance=ExtResource("5_7thud")]
-transform = Transform3D(0.99998, -0.00599348, 0.00181544, 0.00595839, 0.999806, 0.0187511, -0.00192747, -0.01874, 0.999822, 10.2068, -0.515815, -0.645809)
+transform = Transform3D(0.00192743, 0.01874, -0.999822, 0.00595839, 0.999806, 0.0187511, 0.99998, -0.00599348, 0.0018154, 10.2068, -0.515815, -0.645809)
+
+[node name="TestDumy2" parent="CSGCombiner3D" instance=ExtResource("5_7thud")]
+transform = Transform3D(0.00192743, 0.01874, -0.999822, 0.00595839, 0.999806, 0.0187511, 0.99998, -0.00599348, 0.0018154, 23.2068, -0.515815, -6.64581)
+
+[node name="TestDumy6" parent="CSGCombiner3D" instance=ExtResource("5_7thud")]
+transform = Transform3D(0.00192743, 0.01874, -0.999822, 0.00595839, 0.999806, 0.0187511, 0.99998, -0.00599348, 0.0018154, 23.2068, 5.48419, -6.64581)
+
+[node name="TestDumy4" parent="CSGCombiner3D" instance=ExtResource("5_7thud")]
+transform = Transform3D(0.00192743, 0.01874, -0.999822, 0.00595839, 0.999806, 0.0187511, 0.99998, -0.00599348, 0.0018154, 15.2068, -0.515815, 3.35419)
+
+[node name="TestDumy5" parent="CSGCombiner3D" instance=ExtResource("5_7thud")]
+transform = Transform3D(0.00192743, 0.01874, -0.999822, 0.00595839, 0.999806, 0.0187511, 0.99998, -0.00599348, 0.0018154, 15.2068, 3.48418, 3.35419)
+
+[node name="TestDumy3" parent="CSGCombiner3D" instance=ExtResource("5_7thud")]
+transform = Transform3D(0.00192743, 0.01874, -0.999822, 0.00595839, 0.999806, 0.0187511, 0.99998, -0.00599348, 0.0018154, 33.2068, -0.515815, 5.35419)
+
+[node name="TestDumy7" parent="CSGCombiner3D" instance=ExtResource("5_7thud")]
+transform = Transform3D(0.00192743, 0.01874, -0.999822, 0.00595839, 0.999806, 0.0187511, 0.99998, -0.00599348, 0.0018154, 33.2068, 8.48419, 5.35419)
 
 [node name="Label3D" type="Label3D" parent="CSGCombiner3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 2, -1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 2, -1)
 pixel_size = 0.025
 billboard = 1
 texture_filter = 2
 modulate = Color(0, 0, 1, 1)
 outline_modulate = Color(0, 0, 0, 0)
-text = "shot me"
+text = "shot us"
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="CSGCombiner3D"]
+environment = SubResource("Environment_afbqv")
