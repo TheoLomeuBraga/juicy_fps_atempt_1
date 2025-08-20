@@ -1,0 +1,10 @@
+
+godot version: 4.4
+
+cmd:
+scons platform=windows target="template_release" profile=custom.py optimize=size
+scons platform=linuxbsd target="template_release" profile=custom.py optimize=size
+scons platform=web target="template_release" profile=custom.py lto=full optimize=size
+
+
+

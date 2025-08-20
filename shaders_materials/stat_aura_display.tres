@@ -11,11 +11,11 @@ uniform vec4 color : source_color;
 
 
 void fragment() {
-	
+
 	vec2 base_uv = UV;
 	ALBEDO = color.rgb;
 	ALPHA = (1.0 - dot(VIEW,NORMAL)) * color.a;
-	
+
 }
 "
 

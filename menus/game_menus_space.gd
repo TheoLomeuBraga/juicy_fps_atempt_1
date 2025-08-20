@@ -5,6 +5,14 @@ class_name GameMenusSpace
 func pause() -> void:
 	get_tree().paused = not get_tree().paused
 	$PauseMenu.visible = get_tree().paused
+	'''
+	if get_tree().paused:
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	else:
+		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	'''
+
+func _input(event: InputEvent) -> void:
 	if get_tree().paused:
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	else:

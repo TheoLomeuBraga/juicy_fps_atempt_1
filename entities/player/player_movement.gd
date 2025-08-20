@@ -27,7 +27,7 @@ enum AirMovementType { NONE, FULL, PARTIAL }
 @onready var model : FPSCharterModel = $SubViewportContainer/SubViewport/Camera3D/first_person_charter
 
 func _ready() -> void:
-	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	#Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	model.walk_speed = 1.0
 	model.walk_influence = 0.0
 	model.walk_sway_influence = 0.8
@@ -45,6 +45,9 @@ func _input(event)  -> void:
 		var joystick_camera_rotation : Vector2 = event.relative * mouse_sensitivity
 		camera.rotation.x -= joystick_camera_rotation.y
 		rotation.y -= joystick_camera_rotation.x
+	
+	if Input.get_mouse_mode() != Input.MOUSE_MODE_CAPTURED:
+		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 func _process(delta: float) -> void:
 	
